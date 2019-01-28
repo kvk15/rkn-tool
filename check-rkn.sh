@@ -13,8 +13,13 @@ done
 cat $file | wc -l
 cat $file | while read line
 do
-    echo "$line"
-    curl --connect-timeout 10 -vsI "$line" 2>&1 >/dev/null | grep --color -E "(Loca)|(Rec)|(reset)|(timed out)|(resolve)|(communicate)"
+    echo -e "\e[0m$line"
+    curl --connect-timeout 10 -vsI "$line" 2>&1 >/dev/null | grep -E "(Loca)|(Rec)|(reset)|(timed out)|(resolve)|(communicate)"
+    if [ $? -ne 1 ]; then
+        echo -e "\e[32mBlocked"
+    else
+        echo -e "\e[31mUnblocked"
+    fi
     echo " "
 done ;
 
