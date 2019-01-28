@@ -14,8 +14,8 @@ cat $file | wc -l
 cat $file | while read line
 do
     echo "$line"
-    curl --connect-timeout 10 -vsI "$line" 2>&1 >/dev/null | grep -E "(Loca)|(Rec)|(reset)|(timed out)|(resolve)"
+    curl --connect-timeout 10 -vsI "$line" 2>&1 >/dev/null | grep --color -E "(Loca)|(Rec)|(reset)|(timed out)|(resolve)|(communicate)"
     echo " "
 done ;
 
-
+rm -rf $file
