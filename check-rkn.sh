@@ -17,7 +17,7 @@ cat $file | wc -l
 cat $file | while read line
 do
     echo "$line"
-    curl --connect-timeout 10 -vsI "$line" 2>&1 >/dev/null | grep -E "Loca|Rec"
+    curl --connect-timeout 10 -vsI "$line" 2>&1 >/dev/null | grep -E "(Loca)|(Rec)|(reset)|(timed out)"
     echo " "
 done ;
 
