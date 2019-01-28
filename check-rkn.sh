@@ -1,9 +1,6 @@
 #!/bin/bash
 file="/tmp/check"
 chmod a+w $file
-rm -rf  ~/html/*
-cat /dev/null > $file
-cat /dev/null > ~/wlog
 
 
 echo "Paste column URL/IP, for break empety lines"
